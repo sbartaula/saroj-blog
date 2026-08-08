@@ -19,12 +19,37 @@ const LazyChatWidget = dynamic(
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:3000";
+const PROFILE_SAME_AS = [
+  "https://sbartaula.github.io/",
+  "https://www.linkedin.com/in/man-on-mission/",
+  "https://github.com/saroj479",
+  "https://www.imdb.com/name/nm10841378/",
+  SITE_URL,
+];
+
+const profileJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  name: "Saroj Bartaula",
+  url: SITE_URL,
+  mainEntity: {
+    "@type": "Person",
+    name: "Saroj Bartaula",
+    alternateName: "Man on Mission",
+    jobTitle: ["Writer", "Filmmaker", "Builder"],
+    description:
+      "Writer, filmmaker, builder exploring technology, storytelling, science, films, books, and ideas.",
+    sameAs: PROFILE_SAME_AS,
+    knowsAbout: ["Technology", "Storytelling", "Science", "Films", "Books", "Ideas"],
+  },
+};
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://localhost:3000'),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: "%s | Saroj Bartaula",
-    default: "Saroj Bartaula: A personal blog",
+    default: "Saroj Bartaula | Technology, Film, Startups & Ideas",
   },
   description:
     "Welcome to my blog, a space where I share my insights on various topics including science, technology, Effective Accelerationism, machine learning, space travel, startup experiences, and personal stories. Each post offers a glimpse into my mind and my journey.",
@@ -43,6 +68,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <Script
+          id="person-jsonld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(profileJsonLd),
+          }}
+        />
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"

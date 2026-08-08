@@ -13,7 +13,7 @@ export const favoriteCollections = [
   },
   {
     title: "Books That Stayed With Me",
-    subtitle: "Placeholder picks you can edit anytime",
+    subtitle: "Books I keep returning to",
     items: [
       "Sapiens - Yuval Noah Harari",
       "Atomic Habits - James Clear",

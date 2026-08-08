@@ -2,6 +2,12 @@ import { headingFont } from "@/app/fonts";
 import { T } from "@/components/T";
 import { Container, Logo, SocialButtons } from ".";
 
+const profileLinks = [
+  { label: "Engineering", href: "https://sbartaula.github.io/" },
+  { label: "GitHub", href: "https://github.com/saroj479" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/man-on-mission/" },
+];
+
 export const Footer = () => {
   return (
     <footer className="relative mt-16 overflow-hidden border-t bg-[linear-gradient(180deg,rgba(var(--background-color-rgb),0.35),rgba(var(--tertiary-color-rgb),0.88))] border-primary-10">
@@ -25,6 +31,19 @@ export const Footer = () => {
         <div className="border-primary/10 bg-background/75 rounded-[28px] border p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]">
           <p className="text-[11px] uppercase tracking-[0.32em] text-secondary">Find Saroj</p>
           <SocialButtons />
+          <nav aria-label="Profile links" className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold tracking-[0.14em] text-primary">
+            {profileLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="underline-offset-4 transition hover:text-accent1 hover:underline"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
           <a
             href="https://milkywaymarket.shop/"
             target="_blank"
