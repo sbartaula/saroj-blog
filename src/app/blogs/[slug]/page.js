@@ -41,12 +41,14 @@ const BlogPage = async ({ params }) => {
             className="absolute !size-full rounded-lg shadow-sm"
           />
         </div>
-        <TranslatedBlogContent
-          content={blog?.content}
-          slug={params.slug}
-          title={blog?.title}
-          showListenButton
-        />
+        <div className="mx-auto max-w-2xl">
+          <TranslatedBlogContent
+            content={blog?.content}
+            slug={params.slug}
+            title={blog?.title}
+            showListenButton
+          />
+        </div>
       </div>
     </Section>
   );
