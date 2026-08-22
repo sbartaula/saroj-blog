@@ -14,6 +14,15 @@ function getChildText(children) {
     .join("");
 }
 
+// A "normal" block whose only non-empty spans are marked as inline `code`
+// (e.g. `action = walking`) is a stacked code sample, not prose.
+function isCodeOnlyLine(value) {
+  const spans = value?.children?.filter((child) => child._type === "span") || [];
+  const textSpans = spans.filter((span) => span.text?.trim().length > 0);
+  if (textSpans.length === 0) return false;
+  return textSpans.every((span) => span.marks?.includes("code"));
+}
+
 export const RichText = {
   types: {
     image: ({ value }) => {
@@ -80,11 +89,23 @@ export const RichText = {
         {cleanTextChildren(children)}
       </blockquote>
     ),
-    normal: ({ children }) => {
+    normal: ({ children, value }) => {
       const text = getChildText(children);
       // Skip truly empty blocks instead of rendering them as full blank paragraphs,
       // which otherwise stack extra whitespace between paragraphs on wide screens.
       if (text.trim().length === 0) return null;
+
+      // Short "key = value" style lines (e.g. rendered entirely as inline `code`)
+      // read like a stacked code sample, not standalone paragraphs — use tight
+      // spacing between them instead of full paragraph gaps.
+      if (isCodeOnlyLine(value)) {
+        return (
+          <p className="mb-1.5 text-sm leading-6 text-secondary md:text-base">
+            {cleanTextChildren(children)}
+          </p>
+        );
+      }
+
       return (
         <p className="mb-6 whitespace-pre-wrap text-base leading-8 tracking-normal text-secondary md:mb-7 md:text-lg md:leading-[1.85]">
           {cleanTextChildren(children)}
