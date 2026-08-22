@@ -107,7 +107,7 @@ export const RichText = {
       }
 
       return (
-        <p className="mb-6 whitespace-pre-wrap text-base leading-8 tracking-normal text-secondary md:mb-7 md:text-lg md:leading-[1.85]">
+        <p className="mb-5 whitespace-pre-wrap text-base leading-8 tracking-normal text-secondary md:mb-6 md:text-lg md:leading-8">
           {cleanTextChildren(children)}
         </p>
       );

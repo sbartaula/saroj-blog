@@ -247,7 +247,7 @@ function getBlockClass(style) {
     case "blockquote":
       return "relative mx-auto my-8 max-w-xl rounded-lg border border-accent1-40 px-8 py-5 text-center text-lg italic leading-relaxed whitespace-pre-wrap";
     default:
-      return "mb-6 whitespace-pre-wrap text-base leading-8 tracking-normal text-secondary md:mb-7 md:text-lg md:leading-[1.85]";
+      return "mb-5 whitespace-pre-wrap text-base leading-8 tracking-normal text-secondary md:mb-6 md:text-lg md:leading-8";
   }
 }
 
