@@ -195,12 +195,14 @@ export const TranslatedBlogContent = ({ content, slug, title: originalTitle, sho
       )}
       <article>
         {translatedBlocks.map((block, index) => {
+          const hasContent = block.translatedText?.trim().length > 0;
+          // Skip empty blocks entirely to avoid stacking blank paragraph gaps.
+          if (!hasContent) return null;
           const BlockTag = getBlockTag(block.style);
           const blockClass = getBlockClass(block.style);
-          const hasContent = block.translatedText?.trim().length > 0;
           return (
             <BlockTag key={block.key || index} className={blockClass}>
-              {hasContent ? block.translatedText : "\u00A0"}
+              {block.translatedText}
             </BlockTag>
           );
         })}
@@ -231,21 +233,21 @@ function getBlockClass(style) {
   // These classes match the original RichText component exactly
   switch (style) {
     case "h1":
-      return "mb-4 mt-8 text-2xl font-bold leading-tight md:text-3xl";
+      return "mb-5 mt-10 text-balance text-2xl font-bold leading-tight text-primary md:text-3xl";
     case "h2":
-      return "mb-3 mt-8 text-xl font-semibold leading-tight md:text-2xl";
+      return "mb-4 mt-10 text-balance text-xl font-bold leading-tight text-primary md:text-2xl";
     case "h3":
-      return "mb-3 mt-6 text-lg font-semibold leading-tight md:text-xl";
+      return "mb-3 mt-8 text-balance text-lg font-semibold leading-snug text-primary md:text-xl";
     case "h4":
-      return "mb-2 mt-6 text-base font-semibold leading-tight md:text-lg";
+      return "mb-3 mt-6 text-base font-semibold leading-snug text-primary md:text-lg";
     case "h5":
-      return "mb-2 mt-4 text-base font-medium leading-tight";
+      return "mb-2 mt-5 text-base font-medium leading-snug text-primary";
     case "h6":
-      return "mb-2 mt-4 text-sm font-medium uppercase leading-tight tracking-wide";
+      return "mb-2 mt-5 text-sm font-medium uppercase leading-snug tracking-wide text-primary";
     case "blockquote":
-      return "relative mx-auto my-8 max-w-sm rounded-lg border border-accent1-40 px-8 py-4 text-center italic whitespace-pre-wrap";
+      return "relative mx-auto my-8 max-w-xl rounded-lg border border-accent1-40 px-8 py-5 text-center text-lg italic leading-relaxed whitespace-pre-wrap";
     default:
-      return "mb-5 whitespace-pre-wrap text-sm leading-7 text-secondary lg:text-base";
+      return "mb-5 whitespace-pre-wrap text-base leading-8 tracking-normal text-secondary md:mb-6 md:text-lg md:leading-8";
   }
 }
 
