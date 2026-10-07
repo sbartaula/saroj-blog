@@ -180,14 +180,14 @@ export async function POST(req) {
   - Prefer plain markdown with short sentences.
   - No filler openings like "Sure" or "Absolutely".`
 
-    // 7. Call Groq API (FREE - Llama 3.1 70B)
+    // 7. Call Groq API
     const groq = new Groq({
       apiKey: process.env.GROQ_API_KEY
     })
     
     console.log('Calling Groq API...')
     const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile', // Updated to current free tier model
+      model: 'qwen/qwen3.8-27b',
       messages: [
         {
           role: 'system',
