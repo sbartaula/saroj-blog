@@ -10,17 +10,12 @@
  * 4. Generates embeddings using Cohere API (FREE - 100 calls/min)
  * 5. Stores embeddings in Supabase for vector similarity search
  * 
- * Run: node scripts/index-blog-content.js
+ * Run: node --env-file=.env.local scripts/index-blog-content.js
  */
 
 import { toHTML } from '@portabletext/to-html'
 import { createClient } from '@supabase/supabase-js'
-import fetch from 'node-fetch'
-
-// Polyfill fetch for Node.js if needed
-if (!globalThis.fetch) {
-  globalThis.fetch = fetch
-}
+import { CohereClient } from 'cohere-ai'
 
 // Import Sanity client from your utils
 const SANITY_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
@@ -233,7 +228,7 @@ async function indexBlogContent() {
         
         totalChunks++
         
-        // Rate limiting: wait 1 second between requests (HuggingFace free tier)
+        // Rate limiting: wait 1 second between Cohere requests.
         if (j < chunks.length - 1) {
           await new Promise(resolve => setTimeout(resolve, 1000))
         }
