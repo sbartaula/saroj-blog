@@ -24,7 +24,7 @@ export const HeroSection = () => {
               <div className="absolute bottom-6 right-14 size-4 rounded-full bg-accent1 shadow-[0_0_18px_rgba(var(--accent-color-1-rgb),0.65)]" />
             </div>
             <div className="border-primary/10 bg-background/90 rounded-full border px-4 py-2 text-[10px] uppercase tracking-[0.08em] text-secondary shadow-[0_10px_24px_rgba(10,18,28,0.08)] md:text-[11px] md:tracking-[0.14em]">
-              Writer · Filmmaker · Builder
+              Software &amp; AI Engineer · Founder · Filmmaker
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ export const HeroSection = () => {
           />
           <T
             k="hero.description"
-            fallback="Hi, I'm Saroj. I live in the Milky Way galaxy. Driven by curiosity, I explore the worlds of technology, storytelling and science. Here, I share what I learn and create in the hope of inspiring others to see the world a little differently."
+            fallback="Hi, I'm Saroj. I live in the Milky Way galaxy and currently work across software, AI, computer vision and human motion. I founded Tenslam Vision to explore motion technology, simulation and Physical AI. Filmmaking is part of my earlier creative background, and this remains the place where I share technology, stories, science and personal ideas."
             as="p"
             className="mt-5 max-w-lg text-balance text-sm leading-7 text-secondary xl:text-base"
           />

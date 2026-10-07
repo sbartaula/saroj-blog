@@ -30,6 +30,14 @@ export const Navbar = () => {
           <ul className="border-primary/10 bg-background/90 flex items-center gap-1 rounded-full border px-2 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]">
             <li>
               <Link
+                href="/about"
+                className="animation hover:bg-accent1/10 rounded-full px-4 py-2.5 text-sm font-medium tracking-[0.14em] text-secondary hover:text-primary"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
                 href={`/blogs`}
                 className="animation hover:bg-accent1/10 rounded-full px-4 py-2.5 text-sm font-medium tracking-[0.14em] text-secondary hover:text-primary"
               >
@@ -79,6 +87,13 @@ export const Navbar = () => {
       {isOpen && (
         <div className="border-primary/10 bg-background/95 border-t backdrop-blur-xl md:hidden">
           <Container className="flex flex-col gap-3 py-4">
+            <Link
+              href="/about"
+              onClick={() => setIsOpen(false)}
+              className="animation border-primary/10 bg-background/90 hover:bg-accent1/10 rounded-2xl border px-4 py-3 font-medium tracking-[0.12em] text-primary"
+            >
+              About
+            </Link>
             <Link
               href="/blogs"
               onClick={() => setIsOpen(false)}
