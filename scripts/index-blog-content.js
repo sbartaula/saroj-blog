@@ -190,6 +190,17 @@ async function indexBlogContent() {
     // Chunk the text
     const chunks = chunkText(fullText, 500)
     console.log(`   ✂️  Split into ${chunks.length} chunks`)
+
+    const { error: clearError } = await supabase
+      .from('blog_embeddings')
+      .delete()
+      .eq('blog_slug', blog.slug)
+
+    if (clearError) {
+      console.error('   ❌ Error clearing existing chunks:', clearError.message)
+      errorCount++
+      continue
+    }
     
     // Process each chunk
     for (let j = 0; j < chunks.length; j++) {
