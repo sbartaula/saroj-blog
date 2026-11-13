@@ -25,33 +25,42 @@ export const Footer = () => {
             className={`${headingFont.className} mt-2 text-2xl tracking-[0.08em] text-primary md:text-3xl`}
           />
           <p className="mt-3 max-w-md text-sm leading-7 text-secondary md:text-base">
-            Thoughts on technology, storytelling, science, and making meaningful things that move ideas forward.
+            Thoughts on technology, storytelling, science, and making meaningful
+            things that move ideas forward.
           </p>
         </div>
         <div className="border-primary/10 bg-background/75 rounded-[28px] border p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]">
-          <p className="text-[11px] uppercase tracking-[0.32em] text-secondary">Find Saroj</p>
+          <p className="text-[11px] uppercase tracking-[0.32em] text-secondary">
+            Find Saroj
+          </p>
           <SocialButtons />
-          <nav aria-label="Profile links" className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold tracking-[0.14em] text-primary">
+          <nav
+            aria-label="Profile links"
+            className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold tracking-[0.14em] text-primary"
+          >
             {profileLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                rel={
+                  link.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
                 className="underline-offset-4 transition hover:text-accent1 hover:underline"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <a
-            href="https://milkywaymarket.shop/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-accent1/20 bg-accent1/10 hover:bg-accent1/15 mt-5 inline-flex rounded-full border px-4 py-2 text-sm font-semibold tracking-[0.12em] text-primary transition hover:-translate-y-0.5"
+          <span
+            aria-disabled="true"
+            title="Milky Way Market is temporarily unavailable"
+            className="border-primary/10 bg-primary/5 text-secondary/60 mt-5 inline-flex cursor-not-allowed rounded-full border px-4 py-2 text-sm font-semibold tracking-[0.12em]"
           >
-            <T k="footer.shopLink" fallback="Shop at Milky Way Market" />
-          </a>
+            Milky Way Market · Temporarily unavailable
+          </span>
         </div>
       </Container>
       <Container className="border-primary/10 relative flex flex-col items-center justify-between gap-2 border-t py-5 text-center md:flex-row md:text-left">

@@ -18,8 +18,12 @@ export const Navbar = () => {
         <div className="flex items-center gap-3">
           <Logo className="!w-24 bg-transparent md:!w-28" />
           <div className="hidden md:block">
-            <p className="text-[10px] uppercase tracking-[0.34em] text-secondary">Ideas in Motion</p>
-            <p className={`${headingFont.className} text-primary/90 text-sm tracking-[0.14em]`}>
+            <p className="text-[10px] uppercase tracking-[0.34em] text-secondary">
+              Ideas in Motion
+            </p>
+            <p
+              className={`${headingFont.className} text-primary/90 text-sm tracking-[0.14em]`}
+            >
               Journal, Films, Code
             </p>
           </div>
@@ -47,14 +51,13 @@ export const Navbar = () => {
           </ul>
           <LanguageSwitcher />
           <ThemeToggle />
-          <a
-            href="https://milkywaymarket.shop/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-accent1/20 bg-accent1/10 hover:bg-accent1/15 rounded-full border px-4 py-2.5 text-sm font-semibold tracking-[0.12em] text-primary transition hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(var(--accent-color-1-rgb),0.12)]"
+          <span
+            aria-disabled="true"
+            title="Milky Way Market is temporarily unavailable"
+            className="border-primary/10 bg-primary/5 text-secondary/60 cursor-not-allowed rounded-full border px-4 py-2.5 text-sm font-semibold tracking-[0.12em]"
           >
-            Shop
-          </a>
+            Shop <span className="sr-only">— temporarily unavailable</span>
+          </span>
           <Link href="/buy-me-a-coffee">
             <button className="rounded-full bg-[linear-gradient(135deg,rgba(var(--primary-text-color-rgb),0.96),rgba(var(--accent-color-1-rgb),0.82))] px-4 py-2.5 text-sm font-semibold tracking-[0.12em] text-white transition hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(10,18,28,0.16)]">
               Buy Me a Coffee
@@ -69,12 +72,30 @@ export const Navbar = () => {
           aria-label="Toggle menu"
         >
           {isOpen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
@@ -105,15 +126,12 @@ export const Navbar = () => {
               <LanguageSwitcher />
               <ThemeToggle />
             </div>
-            <a
-              href="https://milkywaymarket.shop/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsOpen(false)}
-              className="border-accent1/20 bg-accent1/10 hover:bg-accent1/15 rounded-2xl border px-4 py-3 text-center text-sm font-semibold tracking-[0.12em] text-primary transition"
+            <span
+              aria-disabled="true"
+              className="border-primary/10 bg-primary/5 text-secondary/60 cursor-not-allowed rounded-2xl border px-4 py-3 text-center text-sm font-semibold tracking-[0.12em]"
             >
-              Shop
-            </a>
+              Shop · Temporarily unavailable
+            </span>
             <Link
               href="/buy-me-a-coffee"
               onClick={() => setIsOpen(false)}
